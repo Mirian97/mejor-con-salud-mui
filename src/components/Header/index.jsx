@@ -36,7 +36,11 @@ function Header() {
       </CustomToolbar>
       {openSearchInput && (
         <Stack my={3} direction='row' justifyContent='center'>
-          <CustomSearchInput placeholder='Buscar por artículo...' sx={{ width: 500 }} />
+          <CustomSearchInput
+            type='search'
+            placeholder='Buscar por artículo...'
+            sx={{ width: 500 }}
+          />
         </Stack>
       )}
     </AppBar>
