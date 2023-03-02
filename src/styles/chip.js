@@ -10,3 +10,13 @@ export const CustomChip = styled(Chip)`
     width: 250px;
   `}
 `
+
+export const CustomArticleChip = styled(Chip)`
+  ${({ theme }) => css`
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 30px;
+    color: white;
+  `}
+`

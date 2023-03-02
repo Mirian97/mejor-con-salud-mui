@@ -1,17 +1,28 @@
 import NorthIcon from '@mui/icons-material/North'
-import { Divider, Grid, Stack, Typography } from '@mui/material'
+import { Grid, Stack, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import useGlobal from '../../hooks/useGlobal'
-import { CustomChip } from '../../styles/chip'
-import { CustomItemArticle, CustomListArticles } from './style'
+import useRequests from '../../hooks/useRequests'
+import ItemArticle from '../ItemArticle'
+import { CustomListArticles } from './style'
 
 function ListArticles() {
+  const { getArticle } = useRequests()
+  const navigate = useNavigate()
   const {
     search,
     setSearch,
     articles,
     setArticles,
+    article,
+    setArticle,
     heroContent: { main, secondary }
   } = useGlobal()
+
+  async function handleNavigateDetailArticle(idArticle) {
+    await getArticle(idArticle)
+    navigate('/detail-article')
+  }
 
   return (
     <CustomListArticles disableGutters>
@@ -20,23 +31,18 @@ function ListArticles() {
         <Typography variant='h3'>Mais Relevantes</Typography>
       </Stack>
       <Grid container spacing={2}>
-        {secondary.map((item) => (
-          <Grid item sm={12}>
-            <CustomItemArticle>
-              <img
-                className='article-image'
-                src={item.featured_media.medium}
-                alt={item.excerpt}
-              />
-              <div className='article-content'>
-                <CustomChip color='primary' label={item?.categories[0].name} />
-                <Typography
-                  className='article-short-text'
-                  variant='h4'
-                >{`${item.excerpt.slice(0, 100)}...`}</Typography>
-              </div>
-              <Divider />
-            </CustomItemArticle>
+        {secondary?.map((item) => (
+          <Grid
+            item
+            sm={12}
+            key={item.id}
+            onClick={() => handleNavigateDetailArticle(item.id)}
+          >
+            <ItemArticle
+              image={item.featured_media.medium}
+              category={item?.categories[0].name}
+              shorText={item.excerpt}
+            />
           </Grid>
         ))}
       </Grid>

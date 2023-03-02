@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
+import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Hero from '../../components/Hero'
 import ListArticles from '../../components/ListArticles'
 import useRequests from '../../hooks/useRequests'
+import { CustomContainerPage } from '../../styles/container'
 import { CustomContentHome } from './style'
 
 function Home() {
@@ -13,13 +15,14 @@ function Home() {
   }, [])
 
   return (
-    <div className='App'>
+    <CustomContainerPage>
       <Header />
       <CustomContentHome disableGutters>
         <Hero />
         <ListArticles />
       </CustomContentHome>
-    </div>
+      <Footer />
+    </CustomContainerPage>
   )
 }
 

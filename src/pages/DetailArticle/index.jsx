@@ -1,11 +1,29 @@
+import BodyArticle from '../../components/ContentArticle'
+import Footer from '../../components/Footer'
 import Header from '../../components/Header'
-import { CustomExample } from './style'
+import InfoArticle from '../../components/InfoArticle'
+import useGlobal from '../../hooks/useGlobal'
+import { CustomContainerPage } from '../../styles/container'
+import { CustomContentArticle } from './style'
 
 function DetailArticle() {
+  const { article } = useGlobal()
+  console.log(article)
+
   return (
-    <CustomExample>
+    <CustomContainerPage>
       <Header />
-    </CustomExample>
+      <CustomContentArticle disableGutters>
+        <InfoArticle
+          title={article.title}
+          author={article.author.name}
+          date={article.modified}
+          category={article.categories[0].name}
+        />
+        <BodyArticle body={article.content} />
+      </CustomContentArticle>
+      <Footer />
+    </CustomContainerPage>
   )
 }
 

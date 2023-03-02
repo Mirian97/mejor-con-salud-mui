@@ -3,7 +3,7 @@ import { messageError } from '../utils/toast'
 import useGlobal from './useGlobal'
 
 function useRequests() {
-  const { setHeroContent } = useGlobal()
+  const { setHeroContent, setArticle } = useGlobal()
 
   async function getHeroContent() {
     try {
@@ -18,8 +18,18 @@ function useRequests() {
     }
   }
 
+  async function getArticle(idArticle) {
+    try {
+      const { data } = await api.get(`/v1/posts/${idArticle}`)
+      setArticle(data)
+    } catch (error) {
+      messageError(error)
+    }
+  }
+
   return {
-    getHeroContent
+    getHeroContent,
+    getArticle
   }
 }
 

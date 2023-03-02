@@ -1,12 +1,16 @@
 import styled from '@emotion/styled'
 import { Container, css } from '@mui/material'
 
-export const CustomContentHome = styled(Container)`
+export const CustomInfoArticle = styled(Container)`
   ${({ theme }) => css`
-    padding: 25px 92px 60px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 4px;
+
+    .container-chip {
+      .item-chip {
+        cursor: pointer;
+      }
+    }
   `}
 `
