@@ -39,10 +39,7 @@ function Hero() {
                 }}
               >
                 <CustomTitleArticleHero>
-                  <CustomChip
-                    color='primary'
-                    label={item?.categories[0].name}
-                  ></CustomChip>
+                  <CustomChip color='primary' label={item?.categories[0].name} />
                   <Typography variant='h5' color='white'>
                     {`${item?.excerpt.slice(0, 80)}...`}
                   </Typography>

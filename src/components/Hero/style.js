@@ -21,7 +21,7 @@ export const CustomMainHero = styled(Paper)`
     cursor: pointer;
 
     :hover {
-      filter: brightness(1.2);
+      filter: brightness(0.8);
     }
 
     ${theme.breakpoints.down('md')} {
@@ -43,7 +43,7 @@ export const CustomSecondaryHero = styled(Paper)`
     cursor: pointer;
 
     :hover {
-      filter: brightness(1.2);
+      filter: brightness(0.8);
     }
   `}
 `
