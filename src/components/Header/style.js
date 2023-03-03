@@ -24,5 +24,9 @@ export const CustomSearchInput = styled(TextField)`
     :hover {
       border: 2px solid white;
     }
+
+    ${theme.breakpoints.down('sm')} {
+      width: 350px;
+    }
   `}
 `

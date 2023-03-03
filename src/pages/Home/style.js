@@ -3,7 +3,7 @@ import { Container, css } from '@mui/material'
 
 export const CustomContentHome = styled(Container)`
   ${({ theme }) => css`
-    padding: 25px 92px 60px;
+    padding: 25px 92px;
     width: 100%;
     display: flex;
     flex-direction: column;

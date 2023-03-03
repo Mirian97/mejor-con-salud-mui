@@ -13,7 +13,7 @@ export const CustomMainHero = styled(Paper)`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 550px;
+    height: 560px;
     width: 100%;
     border-radius: 10px;
     display: flex;

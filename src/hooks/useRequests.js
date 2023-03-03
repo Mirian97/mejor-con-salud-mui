@@ -1,9 +1,19 @@
+import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { messageError } from '../utils/toast'
 import useGlobal from './useGlobal'
 
 function useRequests() {
-  const { setHeroContent, setArticle } = useGlobal()
+  const navigate = useNavigate()
+  const {
+    setHeroContent,
+    setArticle,
+    search,
+    setArticles,
+    setTotalPages,
+    orderByRelevance,
+    currentPage
+  } = useGlobal()
 
   async function getHeroContent() {
     try {
@@ -27,9 +37,34 @@ function useRequests() {
     }
   }
 
+  async function getListArticles() {
+    if (!search) return
+    let url = `/v2/posts?search=${search}`
+    if (orderByRelevance) {
+      url = `/v2/posts?search=${search}&page=1&orderby=relevance`
+    }
+    if (currentPage !== 0) {
+      url = `/v2/posts?search=${search}&page=${currentPage}&orderby=relevance`
+    }
+    try {
+      const { data } = await api.get(url)
+      setArticles(data.data)
+      setTotalPages(data.pages)
+    } catch (error) {
+      messageError(error)
+    }
+  }
+
+  async function handleNavigateDetailArticle(idArticle) {
+    await getArticle(idArticle)
+    navigate('/detail-article')
+  }
+
   return {
     getHeroContent,
-    getArticle
+    getArticle,
+    getListArticles,
+    handleNavigateDetailArticle
   }
 }
 

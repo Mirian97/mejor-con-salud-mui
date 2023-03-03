@@ -1,28 +1,33 @@
-import { useEffect } from 'react'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
-import Hero from '../../components/Hero'
-import ListArticles from '../../components/ListArticles'
+import { CircularProgress } from '@mui/material'
+import { default as React, lazy, Suspense, useEffect } from 'react'
+import useGlobal from '../../hooks/useGlobal'
 import useRequests from '../../hooks/useRequests'
 import { CustomContainerPage } from '../../styles/container'
 import { CustomContentHome } from './style'
+const Footer = lazy(() => import('../../components/Footer'))
+const Header = lazy(() => import('../../components/Header'))
+const Hero = lazy(() => import('../../components/Hero'))
+const ListArticles = lazy(() => import('../../components/ListArticles'))
 
 function Home() {
   const { getHeroContent } = useRequests()
+  const { articles, search } = useGlobal()
 
   useEffect(() => {
     getHeroContent()
   }, [])
 
   return (
-    <CustomContainerPage>
-      <Header />
-      <CustomContentHome disableGutters>
-        <Hero />
-        <ListArticles />
-      </CustomContentHome>
-      <Footer />
-    </CustomContainerPage>
+    <Suspense fallback={<CircularProgress color='inherit' />}>
+      <CustomContainerPage>
+        <Header />
+        <CustomContentHome disableGutters>
+          <Hero />
+          {articles && <ListArticles />}
+        </CustomContentHome>
+        <Footer />
+      </CustomContainerPage>
+    </Suspense>
   )
 }
 

@@ -6,6 +6,10 @@ function useGlobalProvider() {
   const [heroContent, setHeroContent] = useState({})
   const [articles, setArticles] = useState([])
   const [article, setArticle, removeArticle] = useLocalStorage('article')
+  const [currentPage, setCurrentPage] = useState(0)
+  const [totalPages, setTotalPages] = useState(0)
+  const [orderByRelevance, setOrderByRelevance] = useState(false)
+  const [notFound, setNotFound] = useState(false)
 
   return {
     search,
@@ -16,7 +20,15 @@ function useGlobalProvider() {
     setArticles,
     article,
     setArticle,
-    removeArticle
+    removeArticle,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    setTotalPages,
+    orderByRelevance,
+    setOrderByRelevance,
+    notFound,
+    setNotFound
   }
 }
 

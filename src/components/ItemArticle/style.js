@@ -11,8 +11,8 @@ export const CustomItemArticle = styled('section')`
     width: 100%;
 
     .article-image {
-      width: 250px;
-      height: 150px;
+      min-width: 200px;
+      height: 130px;
       border-radius: 5px;
     }
 
@@ -28,6 +28,16 @@ export const CustomItemArticle = styled('section')`
       }
       .article-image {
         filter: brightness(0.8);
+      }
+    }
+
+    ${theme.breakpoints.down('sm')} {
+      display: flex;
+      flex-direction: column;
+
+      .article-image {
+        width: 100%;
+        height: 250px;
       }
     }
   `}

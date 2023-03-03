@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material'
 import { CustomArticleChip } from '../../styles/chip'
+import { handleFormatDate } from '../../utils/formatters'
 import { CustomInfoArticle } from './style'
 
 function InfoArticle({ title, author, date, category }) {
@@ -12,7 +13,7 @@ function InfoArticle({ title, author, date, category }) {
         {author}
       </Typography>
       <Typography variant='h5' color='grey.300'>
-        Data de publicação: {date}
+        Data de publicação: {handleFormatDate(date)}
       </Typography>
       <div className='container-chip'>
         <CustomArticleChip className='item-chip' color='primary' label={category} />
