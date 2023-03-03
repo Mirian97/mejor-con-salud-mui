@@ -25,12 +25,14 @@ function ListArticles() {
 
   useEffect(() => {
     getListArticles()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage])
 
   useEffect(() => {
     if (true) {
       handleOrderByRelevance()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderByRelevance])
 
   return (
