@@ -44,6 +44,11 @@ export const CustomFooter = styled('footer')`
           }
         }
       }
+
+      ${theme.breakpoints.down('sm')} {
+        flex-direction: column;
+        gap: 20px;
+      }
     }
   `}
 `

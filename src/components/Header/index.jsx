@@ -1,5 +1,4 @@
 import CloseIcon from '@mui/icons-material/Close'
-import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import { AppBar, Container, IconButton, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
@@ -38,9 +37,6 @@ function Header() {
     <AppBar position='static'>
       <Container disableGutters>
         <CustomToolbar>
-          <IconButton color='inherit'>
-            <MenuIcon sx={{ fontSize: 35 }} />
-          </IconButton>
           <Stack direction='row' gap={2} alignItems='center'>
             <Link to='/'>
               <img className='image-logo' src={logo} alt='Logo' />

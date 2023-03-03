@@ -1,15 +1,14 @@
 import NorthIcon from '@mui/icons-material/North'
-import { Grid, Pagination, Stack, Typography } from '@mui/material'
-import { useEffect } from 'react'
+import { CircularProgress, Grid, Pagination, Stack, Typography } from '@mui/material'
+import { default as React, lazy, Suspense, useEffect } from 'react'
 import useGlobal from '../../hooks/useGlobal'
 import useRequests from '../../hooks/useRequests'
-import ItemArticle from '../ItemArticle'
 import { CustomListArticles } from './style'
+const ItemArticle = lazy(() => import('../ItemArticle'))
 
 function ListArticles() {
   const { getListArticles, handleNavigateDetailArticle } = useRequests()
   const {
-    search,
     articles,
     currentPage,
     setCurrentPage,
@@ -35,7 +34,7 @@ function ListArticles() {
   }, [orderByRelevance])
 
   return (
-    <>
+    <Suspense fallback={<CircularProgress />}>
       {articles.length ? (
         <CustomListArticles disableGutters>
           <Stack
@@ -48,7 +47,6 @@ function ListArticles() {
             <NorthIcon sx={{ fontSize: 25 }} />
             <Typography variant='h3'>Mais Relevantes</Typography>
           </Stack>
-
           <Grid container spacing={2}>
             {articles?.map((item) => (
               <Grid
@@ -77,7 +75,7 @@ function ListArticles() {
       ) : (
         ''
       )}
-    </>
+    </Suspense>
   )
 }
 

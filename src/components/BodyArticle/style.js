@@ -46,6 +46,11 @@ export const CustomBodyArticle = styled('div')`
         align-self: center;
         width: 500px;
         height: 300px;
+
+        ${theme.breakpoints.down('sm')} {
+          width: 300px;
+          height: 200px;
+        }
       }
 
       figcaption {

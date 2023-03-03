@@ -12,6 +12,10 @@ export const CustomToolbar = styled(Toolbar)`
     .image-logo {
       width: 60px;
     }
+
+    ${theme.breakpoints.down('sm')} {
+      margin: 0 16px;
+    }
   `}
 `
 

@@ -8,5 +8,9 @@ export const CustomContentHome = styled(Container)`
     display: flex;
     flex-direction: column;
     gap: 30px;
+
+    ${theme.breakpoints.down('sm')} {
+      padding: 25px 40px;
+    }
   `}
 `

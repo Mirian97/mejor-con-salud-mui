@@ -11,7 +11,7 @@ const ListArticles = lazy(() => import('../../components/ListArticles'))
 
 function Home() {
   const { getHeroContent } = useRequests()
-  const { articles, search } = useGlobal()
+  const { articles } = useGlobal()
 
   useEffect(() => {
     getHeroContent()

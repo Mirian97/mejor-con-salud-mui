@@ -5,5 +5,9 @@ export const CustomContentArticle = styled(Container)`
   ${({ theme }) => css`
     padding: 25px 92px 60px;
     font-family: 'Montserrat', sans-serif;
+
+    ${theme.breakpoints.down('sm')} {
+      padding: 25px 40px;
+    }
   `}
 `
