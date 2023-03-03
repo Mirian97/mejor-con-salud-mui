@@ -29,27 +29,6 @@ export const theme = createTheme({
       light: '#F5A8D0',
       dark: '#75003B',
       contrastText: '#F8F8F9'
-    },
-    secondary: {
-      main: '#0E8750',
-      light: '#ACD9C5',
-      dark: '#034A2A',
-      contrastText: '#F8F8F9'
-    },
-    success: {
-      main: '#C3D4FE',
-      light: '#5482F6',
-      dark: '#243F80'
-    },
-    warning: {
-      main: '#CC7800',
-      light: '#EF8F00',
-      lighter: '#F5D9B0'
-    },
-    error: {
-      main: '#AE1100',
-      light: '#E70000',
-      lighter: '#F2D6D0'
     }
   },
   shape: {
@@ -57,24 +36,6 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: "'Montserrat', 'Nunito', sans-serif",
-    body1: {
-      fontFamily: "'Nunito', sans-serif",
-      fontSize: '1.6rem',
-      fontWeight: 400,
-      lineHeight: 1.7
-    },
-    body2: {
-      fontFamily: "'Nunito', sans-serif",
-      fontSize: '1.4',
-      fontWeight: 400,
-      lineHeight: 1.5
-    },
-    body3: {
-      fontFamily: "'Nunito', sans-serif",
-      fontSize: '1.2',
-      fontWeight: 400,
-      lineHeight: 1.5
-    },
     subtitle1: {
       fontFamily: "'Nunito', sans-serif",
       fontSize: '1.6rem',

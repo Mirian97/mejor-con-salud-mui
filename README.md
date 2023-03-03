@@ -1,6 +1,6 @@
 # Mejor con salud
 
-Site de buscas de artigos de saúde, faz uso da API Mejor con salud: https://api.beta.mejorconsalud.com/wp-json/mc/v1/;
+Site de buscas de artigos de saúde responsivo, faz uso da API Mejor con salud: https://api.beta.mejorconsalud.com/wp-json/mc/v1/
 
 ## Como instalar e usar o projeto
 
@@ -26,14 +26,22 @@ Ao abrir a Home contém um buscador de artigos para facilitar aos usuários enco
 Ao apertar "Enter" o site faz as requisições a API, para o termo pesquisado
 É possível filtrar os artigos por: "Mais Relevantes" no topo.
 
+<img src="/src/assets/images/search.png">
+
 Ao ter o resultado, mostra:
 
 - Paginação para navegar entre os resultados
 - Buscador para realizar a busca novamente
 - Se não obtém resposta nenhuma, exibe a mensagem: "Não existem artigos relacionados ao termo pesquisado!
 
+<img src="/src/assets/images/not-found.png">
+
 ### Tela de Artigo
 
 Após pesquisar, é possível abrir o artigo, onde é exibido conteúdo do artigo.
 
 E contém os elementos básicos do artigo: título, categoria, data de publicação, conteúdo(texto para leitura), tags, biografias e nome do autor.
+
+<img src="/src/assets/images/info-article.png">
+
+<img src="/src/assets/images/detail-article.png">
