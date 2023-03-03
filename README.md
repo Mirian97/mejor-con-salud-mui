@@ -20,7 +20,7 @@ O projeto deployado também se encontra em: https://mejor-con-salud.netlify.app/
 
 ### Home Page
 
-<img src="/src/assets/images/home">
+<img src="/src/assets/images/home.png">
 
 Ao abrir a Home contém um buscador de artigos para facilitar aos usuários encontrarem conteúdos personalizados sobre saúde e nutrição.
 Ao apertar "Enter" o site faz as requisições a API, para o termo pesquisado
