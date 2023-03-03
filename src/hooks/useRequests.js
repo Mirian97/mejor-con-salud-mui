@@ -24,7 +24,7 @@ function useRequests() {
         secondary: onlyWithImage.slice(1, 5)
       })
     } catch (error) {
-      messageError(error)
+      messageError('Não foi possível carregar o conteúdo da página Home')
     }
   }
 
@@ -33,7 +33,7 @@ function useRequests() {
       const { data } = await api.get(`/v1/posts/${idArticle}`)
       setArticle(data)
     } catch (error) {
-      messageError(error)
+      messageError('Não foi possível carregar o artigo')
     }
   }
 
@@ -51,7 +51,7 @@ function useRequests() {
       setArticles(data.data)
       setTotalPages(data.pages)
     } catch (error) {
-      messageError(error)
+      messageError('Não foi possível carregar a listagem de artigos')
     }
   }
 
