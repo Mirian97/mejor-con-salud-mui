@@ -20,8 +20,6 @@ npm start
 
 O projeto deployado também se encontra em: https://mejor-con-salud.netlify.app/
 
----
-
 ### Home Page
 
 <img src="/src/assets/images/home.png">
@@ -55,3 +53,11 @@ E contém os elementos básicos do artigo: título, categoria, data de publicaç
 <img src="/src/assets/images/detail-article.png">
 
 ---
+
+### Tecnologias usadas
+
+- React.js;
+- MUI;
+- React Toastify;
+- React Router Dom;
+- React Use
