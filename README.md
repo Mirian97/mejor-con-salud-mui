@@ -2,6 +2,8 @@
 
 Site de buscas de artigos de saúde responsivo, faz uso da API Mejor con salud: https://api.beta.mejorconsalud.com/wp-json/mc/v1/
 
+---
+
 ## Como instalar e usar o projeto
 
 Clone este repositório numa pasta de sua preferência, inicie com o comamdo abaixo para instalar as dependencias e bibliotecas auxiliares do projeto
@@ -17,6 +19,8 @@ npm start
 ```
 
 O projeto deployado também se encontra em: https://mejor-con-salud.netlify.app/
+
+---
 
 ### Home Page
 
@@ -36,6 +40,8 @@ Ao ter o resultado, mostra:
 
 <img src="/src/assets/images/not-found.png">
 
+---
+
 ### Tela de Artigo
 
 Após pesquisar, é possível abrir o artigo, onde é exibido conteúdo do artigo.
@@ -44,4 +50,8 @@ E contém os elementos básicos do artigo: título, categoria, data de publicaç
 
 <img src="/src/assets/images/info-article.png">
 
+<br/>
+
 <img src="/src/assets/images/detail-article.png">
+
+---
