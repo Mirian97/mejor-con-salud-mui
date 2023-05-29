@@ -1,5 +1,5 @@
 import { CircularProgress } from '@mui/material'
-import { default as React, lazy, Suspense, useEffect } from 'react'
+import { default as React, Suspense, lazy, memo, useEffect } from 'react'
 import useGlobal from '../../hooks/useGlobal'
 import useRequests from '../../hooks/useRequests'
 import { CustomContainerPage } from '../../styles/container'
@@ -32,4 +32,4 @@ function Home() {
   )
 }
 
-export default Home
+export default memo(Home)
