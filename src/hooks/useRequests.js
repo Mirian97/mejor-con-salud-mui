@@ -8,11 +8,12 @@ function useRequests() {
   const {
     setHeroContent,
     setArticle,
-    search,
+    articles,
     setArticles,
     setTotalPages,
     orderByRelevance,
-    currentPage
+    currentPage,
+    setNotFound
   } = useGlobal()
 
   async function getHeroContent() {
@@ -51,6 +52,7 @@ function useRequests() {
       const filteredData = data.data.filter((article) => article.featured_media)
       setArticles(filteredData)
       setTotalPages(data.pages)
+      articles.length ? setNotFound(false) : setNotFound(true)
     } catch (error) {
       messageError('Não foi possível carregar a listagem de artigos')
     }
