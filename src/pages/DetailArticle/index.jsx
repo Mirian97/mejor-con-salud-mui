@@ -1,5 +1,5 @@
 import { CircularProgress } from '@mui/material'
-import { default as React, lazy, Suspense } from 'react'
+import { default as React, Suspense, lazy, memo } from 'react'
 import useGlobal from '../../hooks/useGlobal'
 import { CustomContainerPage } from '../../styles/container'
 import { CustomContentArticle } from './style'
@@ -32,4 +32,4 @@ function DetailArticle() {
   )
 }
 
-export default DetailArticle
+export default memo(DetailArticle)
