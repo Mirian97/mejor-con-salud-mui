@@ -52,9 +52,11 @@ function useRequests() {
       const filteredData = data.data.filter((article) => article.featured_media)
       setArticles(filteredData)
       setTotalPages(data.pages)
-      articles.length ? setNotFound(false) : setNotFound(true)
+      setNotFound(articles.length === 0)
     } catch (error) {
       messageError('Não foi possível carregar a listagem de artigos')
+      setNotFound(true)
+      navigate('/')
     }
   }
 
