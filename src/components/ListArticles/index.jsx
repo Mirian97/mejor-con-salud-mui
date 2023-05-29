@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import NorthIcon from '@mui/icons-material/North'
-import { CircularProgress, Grid, Pagination, Stack, Typography } from '@mui/material'
-import { default as React, lazy, Suspense, useEffect } from 'react'
+import { Grid, Pagination, Stack, Typography } from '@mui/material'
+import { default as React, useEffect } from 'react'
 import useGlobal from '../../hooks/useGlobal'
 import useRequests from '../../hooks/useRequests'
+import ItemArticle from '../ItemArticle'
 import { CustomListArticles } from './style'
-const ItemArticle = lazy(() => import('../ItemArticle'))
 
 function ListArticles() {
   const { getListArticles, handleNavigateDetailArticle } = useRequests()
@@ -25,18 +26,16 @@ function ListArticles() {
 
   useEffect(() => {
     getListArticles()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage])
 
   useEffect(() => {
     if (true) {
       handleOrderByRelevance()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderByRelevance])
 
   return (
-    <Suspense fallback={<CircularProgress />}>
+    <>
       {articles.length ? (
         <CustomListArticles disableGutters>
           <Stack
@@ -77,7 +76,7 @@ function ListArticles() {
       ) : (
         ''
       )}
-    </Suspense>
+    </>
   )
 }
 
