@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import CloseIcon from '@mui/icons-material/Close'
 import SearchIcon from '@mui/icons-material/Search'
 import { AppBar, Container, IconButton, Typography } from '@mui/material'
@@ -11,29 +12,27 @@ import useRequests from '../../hooks/useRequests'
 import { CustomSearchInput, CustomToolbar } from './style'
 
 function Header() {
-  // const navigate = useNavigate()
   const { getListArticles } = useRequests()
   const [openSearchInput, setOpenSeachInput] = useState(false)
-  const { search, setSearch, articles, notFound, setNotFound } = useGlobal()
-  const debouncedInputValue = useDebounce(search, 500)
+  const { search, setSearch, notFound, setNotFound } = useGlobal()
+  const debouncedInputSearch = useDebounce(search)
+  const [isSearching, setIsSearching] = useState(false)
 
-  function handleToggleSeachInput() {
+  function toggleSearchInput() {
     setOpenSeachInput(!openSearchInput)
   }
 
   async function handleSearch(e) {
-    setSearch(e.target.value)
-    // navigate('/')
-    await getListArticles(debouncedInputValue)
+    const searchTerm = e.target.value
+    setSearch(searchTerm)
+    setIsSearching(true)
+    await getListArticles(debouncedInputSearch)
+    setIsSearching(false)
   }
 
   useEffect(() => {
-    if (!articles.length && search) {
-      setNotFound(true)
-    } else if (articles.length) {
-      setNotFound(false)
-    }
-  }, [articles, search, setNotFound])
+    setNotFound(!isSearching && notFound)
+  }, [isSearching, notFound])
 
   return (
     <AppBar position='static'>
@@ -47,7 +46,7 @@ function Header() {
               Mejor com Salud
             </Typography>
           </Stack>
-          <IconButton color='inherit' onClick={handleToggleSeachInput}>
+          <IconButton color='inherit' onClick={toggleSearchInput}>
             {openSearchInput ? (
               <CloseIcon sx={{ fontSize: 35 }} />
             ) : (
