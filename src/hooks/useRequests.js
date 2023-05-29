@@ -38,7 +38,7 @@ function useRequests() {
 
   async function getListArticles(search, orderByRelevance, currentPage) {
     if (!search) return
-    let url = `/v2/posts?search=${search}`
+    let url = `/v2/posts?search=${search}&orderby=relevance`
     if (orderByRelevance) {
       url = `/v2/posts?search=${search}&page=1&orderby=relevance`
     }
@@ -54,7 +54,6 @@ function useRequests() {
     } catch (error) {
       messageError('Não foi possível carregar a listagem de artigos')
       setNotFound(true)
-      navigate('/')
     }
   }
 

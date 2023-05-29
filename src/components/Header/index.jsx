@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import CloseIcon from '@mui/icons-material/Close'
 import SearchIcon from '@mui/icons-material/Search'
-import { AppBar, Container, IconButton, Typography } from '@mui/material'
+import { AppBar, Button, Container, IconButton, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -22,9 +22,7 @@ function Header() {
     setOpenSeachInput(!openSearchInput)
   }
 
-  async function handleSearch(e) {
-    const searchTerm = e.target.value
-    setSearch(searchTerm)
+  async function handleSearch() {
     setIsSearching(true)
     await getListArticles(debouncedInputSearch)
     setIsSearching(false)
@@ -56,12 +54,20 @@ function Header() {
         </CustomToolbar>
         {openSearchInput && (
           <Stack my={3} direction='column' justifyContent='center' alignItems='center'>
-            <CustomSearchInput
-              type='search'
-              placeholder='Buscar por artículo...'
-              sx={{ width: 500 }}
-              onChange={handleSearch}
-            />
+            <Stack direction='row' gap={2} width='100%' justifyContent='center'>
+              <CustomSearchInput
+                type='text'
+                placeholder='Buscar por artículo...'
+                sx={{ width: 500 }}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                  handleSearch()
+                }}
+              />
+              <Button variant='contained' color='secondary' onClick={handleSearch}>
+                Buscar
+              </Button>
+            </Stack>
             {notFound && (
               <Typography variant='h3' textAlign='center' color='white' mt={2}>
                 ¡No hay artículos relacionados con el término de búsqueda!

@@ -24,13 +24,14 @@ export const CustomSearchInput = styled(TextField)`
     background-color: ${theme.palette.primary.light};
     border-radius: 10px;
     border: 1px solid ${theme.palette.primary};
+    width: 350px;
 
     :hover {
       border: 2px solid white;
     }
 
     ${theme.breakpoints.down('sm')} {
-      width: 350px;
+      max-width: 300px;
     }
   `}
 `
