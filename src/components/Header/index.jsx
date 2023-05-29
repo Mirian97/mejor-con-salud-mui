@@ -3,26 +3,28 @@ import SearchIcon from '@mui/icons-material/Search'
 import { AppBar, Container, IconButton, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/logo-outlined.svg'
+import useDebounce from '../../hooks/useDebounce'
 import useGlobal from '../../hooks/useGlobal'
 import useRequests from '../../hooks/useRequests'
 import { CustomSearchInput, CustomToolbar } from './style'
 
 function Header() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const { getListArticles } = useRequests()
   const [openSearchInput, setOpenSeachInput] = useState(false)
   const { search, setSearch, articles, notFound, setNotFound } = useGlobal()
+  const debouncedInputValue = useDebounce(search, 500)
 
   function handleToggleSeachInput() {
     setOpenSeachInput(!openSearchInput)
   }
 
   async function handleSearch(e) {
-    if (e.key !== 'Enter') return
-    navigate('/')
-    await getListArticles()
+    setSearch(e.target.value)
+    // navigate('/')
+    await getListArticles(debouncedInputValue)
   }
 
   useEffect(() => {
@@ -59,8 +61,7 @@ function Header() {
               type='search'
               placeholder='Buscar por artículo...'
               sx={{ width: 500 }}
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyDown={(e) => handleSearch(e)}
+              onChange={handleSearch}
             />
             {notFound && (
               <Typography variant='h3' textAlign='center' color='white' mt={2}>
