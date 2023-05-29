@@ -8,7 +8,6 @@ function useGlobalProvider() {
   const [article, setArticle, removeArticle] = useLocalStorage('article')
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
-  const [orderByRelevance, setOrderByRelevance] = useState(false)
   const [notFound, setNotFound] = useState(false)
 
   return {
@@ -25,8 +24,6 @@ function useGlobalProvider() {
     setCurrentPage,
     totalPages,
     setTotalPages,
-    orderByRelevance,
-    setOrderByRelevance,
     notFound,
     setNotFound
   }

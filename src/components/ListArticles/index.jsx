@@ -1,42 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import NorthIcon from '@mui/icons-material/North'
-import { CircularProgress, Grid, Pagination, Stack, Typography } from '@mui/material'
-import { default as React, lazy, Suspense, useEffect } from 'react'
+import { Grid, Pagination, Stack, Typography } from '@mui/material'
+import { useEffect } from 'react'
+import useDebounce from '../../hooks/useDebounce'
 import useGlobal from '../../hooks/useGlobal'
 import useRequests from '../../hooks/useRequests'
+import ItemArticle from '../ItemArticle'
 import { CustomListArticles } from './style'
-const ItemArticle = lazy(() => import('../ItemArticle'))
 
 function ListArticles() {
+  const { search, articles, currentPage, setCurrentPage, totalPages } = useGlobal()
   const { getListArticles, handleNavigateDetailArticle } = useRequests()
-  const {
-    articles,
-    currentPage,
-    setCurrentPage,
-    totalPages,
-    orderByRelevance,
-    setOrderByRelevance
-  } = useGlobal()
+  const debouncedInputSearch = useDebounce(search)
 
   async function handleOrderByRelevance() {
-    await getListArticles()
+    await getListArticles(debouncedInputSearch, true)
     setCurrentPage(1)
-    setOrderByRelevance(false)
   }
 
   useEffect(() => {
-    getListArticles()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getListArticles(debouncedInputSearch, false, currentPage)
   }, [currentPage])
 
   useEffect(() => {
-    if (true) {
-      handleOrderByRelevance()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orderByRelevance])
+    setCurrentPage(1)
+  }, [search])
 
   return (
-    <Suspense fallback={<CircularProgress />}>
+    <>
       {articles.length ? (
         <CustomListArticles disableGutters>
           <Stack
@@ -44,7 +35,7 @@ function ListArticles() {
             alignItems='center'
             mb={2}
             className='relevance'
-            onClick={() => setOrderByRelevance(true)}
+            onClick={handleOrderByRelevance}
           >
             <NorthIcon sx={{ fontSize: 25 }} />
             <Typography variant='h3'>Mais Relevantes</Typography>
@@ -77,7 +68,7 @@ function ListArticles() {
       ) : (
         ''
       )}
-    </Suspense>
+    </>
   )
 }
 

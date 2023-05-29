@@ -8,11 +8,10 @@ function useRequests() {
   const {
     setHeroContent,
     setArticle,
-    search,
+    articles,
     setArticles,
     setTotalPages,
-    orderByRelevance,
-    currentPage
+    setNotFound
   } = useGlobal()
 
   async function getHeroContent() {
@@ -37,21 +36,25 @@ function useRequests() {
     }
   }
 
-  async function getListArticles() {
+  async function getListArticles(search, orderByRelevance, currentPage) {
     if (!search) return
     let url = `/v2/posts?search=${search}`
     if (orderByRelevance) {
       url = `/v2/posts?search=${search}&page=1&orderby=relevance`
     }
-    if (currentPage !== 0) {
+    if (currentPage > 0) {
       url = `/v2/posts?search=${search}&page=${currentPage}&orderby=relevance`
     }
     try {
       const { data } = await api.get(url)
-      setArticles(data.data)
+      const filteredData = data.data.filter((article) => article.featured_media)
+      setArticles(filteredData)
       setTotalPages(data.pages)
+      setNotFound(articles.length === 0)
     } catch (error) {
       messageError('Não foi possível carregar a listagem de artigos')
+      setNotFound(true)
+      navigate('/')
     }
   }
 
