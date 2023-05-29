@@ -37,7 +37,7 @@ function useRequests() {
     }
   }
 
-  async function getListArticles() {
+  async function getListArticles(search) {
     if (!search) return
     let url = `/v2/posts?search=${search}`
     if (orderByRelevance) {
@@ -48,7 +48,8 @@ function useRequests() {
     }
     try {
       const { data } = await api.get(url)
-      setArticles(data.data)
+      const filteredData = data.data.filter((article) => article.featured_media)
+      setArticles(filteredData)
       setTotalPages(data.pages)
     } catch (error) {
       messageError('Não foi possível carregar a listagem de artigos')
