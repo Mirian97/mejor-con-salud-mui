@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import NorthIcon from '@mui/icons-material/North'
 import { Grid, Pagination, Stack, Typography } from '@mui/material'
-import { default as React, useEffect } from 'react'
+import { useEffect } from 'react'
 import useGlobal from '../../hooks/useGlobal'
 import useRequests from '../../hooks/useRequests'
 import ItemArticle from '../ItemArticle'
