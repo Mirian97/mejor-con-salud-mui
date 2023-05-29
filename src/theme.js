@@ -29,6 +29,10 @@ const theme = createTheme({
       light: '#F5A8D0',
       dark: '#75003B',
       contrastText: '#F8F8F9'
+    },
+    secondary: {
+      main: '#4332e9',
+      contrastText: '#F8F8F9'
     }
   },
   shape: {
@@ -73,12 +77,13 @@ const theme = createTheme({
       lineHeight: 1.5
     },
     button: {
-      fontFamily: 'Nunito',
-      fontWeight: 400,
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: 700,
       fontSize: '1.8rem',
       lineHeight: '2.5rem',
       color: '#F8F8F9',
-      textTransform: 'none'
+      minHeight: 46,
+      textTransform: 'uppercase'
     }
   }
 })
