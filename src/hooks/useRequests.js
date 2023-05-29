@@ -11,8 +11,6 @@ function useRequests() {
     articles,
     setArticles,
     setTotalPages,
-    orderByRelevance,
-    currentPage,
     setNotFound
   } = useGlobal()
 
@@ -38,13 +36,13 @@ function useRequests() {
     }
   }
 
-  async function getListArticles(search) {
+  async function getListArticles(search, orderByRelevance, currentPage) {
     if (!search) return
     let url = `/v2/posts?search=${search}`
     if (orderByRelevance) {
       url = `/v2/posts?search=${search}&page=1&orderby=relevance`
     }
-    if (currentPage !== 0) {
+    if (currentPage > 0) {
       url = `/v2/posts?search=${search}&page=${currentPage}&orderby=relevance`
     }
     try {
